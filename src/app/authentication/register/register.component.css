@@ -1,0 +1,7 @@
+#register_card {
+    width: 22rem;
+    height: min-content;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--element-color)
+}

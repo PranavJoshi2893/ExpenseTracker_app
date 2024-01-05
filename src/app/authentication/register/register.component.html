@@ -1,0 +1,24 @@
+<div id="register_card">
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <mat-form-field appearance="outline" class="fieldset">
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="fieldset">
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="fieldset">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="fieldset">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="submit_btn">Register</button>
+    </form>
+</div>
