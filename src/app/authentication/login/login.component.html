@@ -1,13 +1,33 @@
 <div id="login_card">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-        <mat-form-field appearance="outline" class="fieldset">
+        <mat-form-field appearance="outline" class="fieldset" subscriptSizing="dynamic">
             <mat-label>Username</mat-label>
             <input type="text" matInput formControlName="username">
+            @if(loginForm.get('username')?.hasError('required')){
+            <mat-error>
+                <small>Username is <strong>required</strong></small>
+            </mat-error>
+            }
+            @if(loginForm.get('username')?.hasError('pattern')){
+            <mat-error>
+                <small>Username should consist only of <strong>alphanumeric characters.</strong></small>
+            </mat-error>
+            }
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="fieldset">
+        <mat-form-field appearance="outline" class="fieldset" subscriptSizing="dynamic">
             <mat-label>Password</mat-label>
             <input type="password" matInput formControlName="password">
+            @if(loginForm.get('password')?.hasError('required')){
+            <mat-error>
+                <small>Password is <strong>required</strong></small>
+            </mat-error>
+            }
+            @if(loginForm.get('password')?.hasError('pattern')){
+            <mat-error>
+                <small>Invalid input. Ensure at least 8 characters and include one lowercase, one uppercase, one digit, and one special character.</small>
+            </mat-error>
+            }
         </mat-form-field>
 
         <section class="btn_section">

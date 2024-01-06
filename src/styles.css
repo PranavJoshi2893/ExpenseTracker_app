@@ -56,6 +56,7 @@ body {
 
 .fieldset {
     width: 100%;
+    margin-bottom: 1.25rem;
 }
 
 .btn_section{

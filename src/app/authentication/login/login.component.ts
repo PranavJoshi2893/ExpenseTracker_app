@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this._fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      username: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]],
+      password: ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/)]]
     })
   }
 
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           if (this.rememberState) {
             localStorage.setItem("token", response.token);
-          }else{
+          } else {
             sessionStorage.setItem("token", response.token)
           }
           this.showMessage(response.message);

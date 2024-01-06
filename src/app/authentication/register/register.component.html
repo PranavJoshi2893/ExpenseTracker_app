@@ -1,23 +1,64 @@
 <div id="register_card">
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-        <mat-form-field appearance="outline" class="fieldset">
+        <mat-form-field appearance="outline" class="fieldset" subscriptSizing="dynamic">
             <mat-label>First Name</mat-label>
             <input type="text" matInput formControlName="first_name">
+            @if(registerForm.get('first_name')?.hasError('required')){
+            <mat-error>
+                <small>First Name is <strong>required</strong></small>
+            </mat-error>
+            }
+            @if(registerForm.get('first_name')?.hasError('pattern')){
+            <mat-error>
+                <small>First Name should consist only of <strong>min 2 alphabetic characters.</strong></small>
+            </mat-error>
+            }
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="fieldset">
+        <mat-form-field appearance="outline" class="fieldset" subscriptSizing="dynamic">
             <mat-label>Last Name</mat-label>
             <input type="text" matInput formControlName="last_name">
+            @if(registerForm.get('last_name')?.hasError('required')){
+            <mat-error>
+                <small>Last Name is <strong>required</strong></small>
+            </mat-error>
+            }
+            @if(registerForm.get('last_name')?.hasError('pattern')){
+            <mat-error>
+                <small>Last Name should consist only of <strong>min 2 alphabetic characters.</strong></small>
+            </mat-error>
+            }
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="fieldset">
+        <mat-form-field appearance="outline" class="fieldset" subscriptSizing="dynamic">
             <mat-label>Username</mat-label>
             <input type="text" matInput formControlName="username">
+            @if(registerForm.get('username')?.hasError('required')){
+            <mat-error>
+                <small>Username is <strong>required</strong></small>
+            </mat-error>
+            }
+            @if(registerForm.get('username')?.hasError('pattern')){
+            <mat-error>
+                <small>Username should consist only of <strong>alphanumeric characters.</strong></small>
+            </mat-error>
+            }
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="fieldset">
+        <mat-form-field appearance="outline" class="fieldset" subscriptSizing="dynamic">
             <mat-label>Password</mat-label>
             <input type="password" matInput formControlName="password">
+            @if(registerForm.get('password')?.hasError('required')){
+            <mat-error>
+                <small>Password is <strong>required</strong></small>
+            </mat-error>
+            }
+            @if(registerForm.get('password')?.hasError('pattern')){
+            <mat-error>
+                <small>Invalid input. Ensure at least 8 characters and include one lowercase, one uppercase, one digit,
+                    and one special character.</small>
+            </mat-error>
+            }
         </mat-form-field>
 
         <section class="btn_section">
