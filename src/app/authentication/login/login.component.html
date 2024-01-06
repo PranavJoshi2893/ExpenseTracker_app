@@ -2,13 +2,17 @@
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <mat-form-field appearance="outline" class="fieldset">
             <mat-label>Username</mat-label>
-            <input type="text" matInput>
+            <input type="text" matInput formControlName="username">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="fieldset">
             <mat-label>Password</mat-label>
-            <input type="password" matInput>
+            <input type="password" matInput formControlName="password">
         </mat-form-field>
-        <button mat-raised-button color="primary" class="submit_btn">Login</button>
+
+        <section class="btn_section">
+            <mat-checkbox (change)="onRemember()">Remember me!</mat-checkbox>
+            <button mat-raised-button color="primary">Login</button>
+        </section>
     </form>
 </div>

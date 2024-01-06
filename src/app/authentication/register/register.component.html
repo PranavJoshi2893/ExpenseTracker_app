@@ -2,23 +2,27 @@
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
         <mat-form-field appearance="outline" class="fieldset">
             <mat-label>First Name</mat-label>
-            <input type="text" matInput>
+            <input type="text" matInput formControlName="first_name">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="fieldset">
             <mat-label>Last Name</mat-label>
-            <input type="text" matInput>
+            <input type="text" matInput formControlName="last_name">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="fieldset">
             <mat-label>Username</mat-label>
-            <input type="text" matInput>
+            <input type="text" matInput formControlName="username">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="fieldset">
             <mat-label>Password</mat-label>
-            <input type="password" matInput>
+            <input type="password" matInput formControlName="password">
         </mat-form-field>
-        <button mat-raised-button color="primary" class="submit_btn">Register</button>
+
+        <section class="btn_section">
+            <button mat-stroked-button color="primary" (click)="dialogRef.close()" type="button">Close</button>
+            <button mat-raised-button color="primary">Register</button>
+        </section>
     </form>
 </div>

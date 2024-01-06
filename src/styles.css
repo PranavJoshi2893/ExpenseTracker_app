@@ -58,6 +58,8 @@ body {
     width: 100%;
 }
 
-.submit_btn {
-    width: 100%;
+.btn_section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
