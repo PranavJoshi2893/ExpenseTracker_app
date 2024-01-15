@@ -13,4 +13,17 @@
 #edit_tracker{
     width: 20rem;
     border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#button_section{
+    width: 100%;
+    height: min-content;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

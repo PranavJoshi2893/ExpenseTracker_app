@@ -2,28 +2,21 @@
     <div id="main_tracker">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef> No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Date. </th>
+                <td mat-cell *matCellDef="let element"> {{element.date | date :"MMM dd, yyyy 'at' hh:mm a"}} </td>
             </ng-container>
 
-            <!-- Name Column -->
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
 
-            <!-- Weight Column -->
             <ng-container matColumnDef="earning">
                 <th mat-header-cell *matHeaderCellDef> Earning </th>
                 <td mat-cell *matCellDef="let element"> {{element.earning}} </td>
             </ng-container>
 
-            <!-- Symbol Column -->
             <ng-container matColumnDef="expences">
                 <th mat-header-cell *matHeaderCellDef> Expences </th>
                 <td mat-cell *matCellDef="let element"> {{element.expences}} </td>
@@ -35,5 +28,15 @@
 
 
     </div>
-    <div id="edit_tracker"></div>
+    <div id="edit_tracker">
+        <section id="button_section">
+            <button mat-raised-button (click)="addExpenses()">Expenses</button>
+            <button mat-raised-button (click)="addEarning()">Earning</button>
+        </section>
+        @if(switchEditor){
+        <app-expenses-editor></app-expenses-editor>
+        }@else{
+        <app-earning-editor></app-earning-editor>
+        }
+    </div>
 </div>
