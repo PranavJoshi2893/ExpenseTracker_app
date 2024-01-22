@@ -6,11 +6,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion'
 import { CommonModule } from '@angular/common';
 import { ExpensesService } from '../shared/service/expenses.service';
+import { Dialog, DialogModule } from '@angular/cdk/dialog';
+import { UpdaterComponent } from './updater/updater.component';
 
 @Component({
   selector: 'app-tracker',
   standalone: true,
-  imports: [MatTableModule, ExpensesEditorComponent, EarningEditorComponent, MatButtonModule, CommonModule, MatExpansionModule],
+  imports: [MatTableModule, ExpensesEditorComponent, EarningEditorComponent, MatButtonModule, CommonModule, MatExpansionModule, DialogModule],
   templateUrl: './tracker.component.html',
   styleUrl: './tracker.component.css'
 })
@@ -18,7 +20,7 @@ export class TrackerComponent implements OnInit {
   displayedColumns: string[] = ['date', 'details', 'earning', 'expense', 'delete', 'update'];
   dataSource: any[] = [];
 
-  constructor(private _expensesService: ExpensesService) { }
+  constructor(private _expensesService: ExpensesService, private _dialog: Dialog) { }
 
   ngOnInit(): void {
     this.getData();
@@ -28,7 +30,7 @@ export class TrackerComponent implements OnInit {
     this._expensesService.getAllData().subscribe(data => this.dataSource = data.data)
   }
 
-  updateList(){
+  updateList() {
     this.getData()
   }
 
@@ -41,6 +43,14 @@ export class TrackerComponent implements OnInit {
       error: (error) => {
         console.log(error.error.message)
       }
+    })
+  }
+
+  onEdit(_id: string, date: Date, details: string, earning: string, expense: string) {
+    this._dialog.open(UpdaterComponent, {
+      data: {
+        _id, date, details, earning, expense
+      }, disableClose: true, autoFocus: false
     })
   }
 

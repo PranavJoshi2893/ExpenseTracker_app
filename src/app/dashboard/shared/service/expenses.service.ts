@@ -23,6 +23,10 @@ export class ExpensesService {
     return this._http.delete<any>(`${this._url}/delete/${id}`)
   }
 
+  updateData(id: any, data: any): Observable<any> {
+    return this._http.patch<any>(`${this._url}/update/${id}`, data)
+  }
+
   getAllData(): Observable<any> {
     return this._http.get<any>(`${this._url}/getAll`)
   }

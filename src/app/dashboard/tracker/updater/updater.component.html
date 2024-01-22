@@ -1,0 +1,30 @@
+<div id="update_container">
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="fieldset" subscriptSizing="dynamic">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="fieldset" subscriptSizing="dynamic">
+            <mat-label>Details</mat-label>
+            <input type="text" matInput formControlName="details">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="fieldset" subscriptSizing="dynamic">
+            <mat-label>Earning</mat-label>
+            <input type="text" matInput formControlName="earning">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="fieldset" subscriptSizing="dynamic">
+            <mat-label>Expense</mat-label>
+            <input type="text" matInput formControlName="expense">
+        </mat-form-field>
+
+        <section class="btn_section">
+            <button mat-stroked-button color="primary" (click)="dialogRef.close()">Close</button>
+            <button mat-raised-button color="primary">Update</button>
+        </section>
+    </form>
+</div>
