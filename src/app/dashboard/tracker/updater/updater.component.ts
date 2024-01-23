@@ -40,8 +40,8 @@ export class UpdaterComponent implements OnInit {
     if (this.updateForm.valid) {
       this._expensesService.updateData(this.data._id, this.updateForm.value).subscribe({
         next: (response) => {
-          console.log(response.message),
-          this.dialogRef.close();
+          console.log(response.message);
+          this.dialogRef.close(true);
         },
         error: (error) => {
           console.log(error.error.message);

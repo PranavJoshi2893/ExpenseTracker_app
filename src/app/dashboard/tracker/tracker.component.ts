@@ -17,7 +17,7 @@ import { UpdaterComponent } from './updater/updater.component';
   styleUrl: './tracker.component.css'
 })
 export class TrackerComponent implements OnInit {
-  displayedColumns: string[] = ['date', 'details', 'earning', 'expense', 'delete', 'update'];
+  displayedColumns: string[] = ['date', 'details', 'earning', 'expense', 'balance', 'delete', 'update'];
   dataSource: any[] = [];
 
   constructor(private _expensesService: ExpensesService, private _dialog: Dialog) { }
@@ -47,10 +47,16 @@ export class TrackerComponent implements OnInit {
   }
 
   onEdit(_id: string, date: Date, details: string, earning: string, expense: string) {
-    this._dialog.open(UpdaterComponent, {
+    const dialogRef = this._dialog.open(UpdaterComponent, {
       data: {
         _id, date, details, earning, expense
       }, disableClose: true, autoFocus: false
+    });
+
+    dialogRef.closed.subscribe(result => {
+      if (result) {
+        this.getData();
+      }
     })
   }
 
