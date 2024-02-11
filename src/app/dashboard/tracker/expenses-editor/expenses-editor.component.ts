@@ -31,7 +31,7 @@ export class ExpensesEditorComponent implements OnInit {
 
   onSubmit() {
     if (this.expensesForm.valid) {
-      this._expensesService.addExpense(this.expensesForm.value).subscribe({
+      this._expensesService.addExpenseOrEarning(this.expensesForm.value).subscribe({
         next: (response) => {
           console.log(response.message)
           this.updateList.emit()

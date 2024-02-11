@@ -32,7 +32,7 @@ export class EarningEditorComponent implements OnInit {
 
   onSubmit() {
     if (this.earningForm.valid) {
-      this._expensesService.addEarning(this.earningForm.value).subscribe({
+      this._expensesService.addExpenseOrEarning(this.earningForm.value).subscribe({
         next: (response) => {
           console.log(response.message);
           this.updateList.emit()

@@ -11,12 +11,8 @@ export class ExpensesService {
   constructor(private _http: HttpClient) { }
 
 
-  addExpense(expense: any): Observable<any> {
+  addExpenseOrEarning(expense: any): Observable<any> {
     return this._http.post<any>(`${this._url}/expense`, expense)
-  }
-
-  addEarning(earning: any): Observable<any> {
-    return this._http.post<any>(`${this._url}/earning`, earning)
   }
 
   deleteEntry(id: any): Observable<any> {
